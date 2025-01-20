@@ -1,4 +1,5 @@
 
+
 import requests
 from pprint import pprint
 from progress.bar import IncrementalBar
@@ -116,4 +117,3 @@ vk = VK(user_id, token_yandex, count=2)
 
 # vk.create_folder_on_yandex(folder_name='folder')
 vk.send_photos_to_yandex(photos=vk.photos_max_size)
-
