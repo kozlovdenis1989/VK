@@ -64,6 +64,7 @@ class VK:
         url = 'https://api.vk.com/method/photos.get'
         params = {'owner_id': self.id, 'album_id': 'profile', 'count': count, 'extended': 1}
         response = requests.get(url, params={**self.params, **params})
+
         if 'error' in response.json():
             raise Exception(f'Get_info:\nКод ошибки: {response.json()['error']['error_code']}.\n'
                             f'Информация: {response.json()['error']['error_msg']}')
@@ -140,10 +141,11 @@ class VK:
                 photos_save_info.append({'file_name': f'{photo['name']}.jpeg',
                                          'size': photo['type']})
             bar.next()
+
         bar.finish()
         self._save_json_info(photos_save_info, 'save_complete')
         print(f'Сохранено на яндекс диске: {len(photos_save_info)} из {len(photos)}')
-
+        
         if len(photos_save_error) != 0:
             print('Ошибки смотреть в errors.json')
             self._save_json_info(photos_save_error, 'errors')
@@ -153,8 +155,8 @@ class VK:
 
 
 
-token_yandex = 'y0__wgBEJ-dhNgHGNuWAyCyhpSGEjonA8Oso71VgEJwnKz265VaQofZ' # Токен яндекса
-user_id = '1022983605' # идентификатор пользователя vk
+token_yandex = '' # Токен яндекса
+user_id = '' # идентификатор пользователя vk
 
 if __name__ == "__main__":
 
